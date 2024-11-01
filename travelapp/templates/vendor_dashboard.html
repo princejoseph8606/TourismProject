@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Vendor Dashboard{% endblock %}
+{% block content %}
+<h2>Vendor Dashboard</h2>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn">Add Package</button>
+</form>
+<!--<h3>Your Packages</h3>
+<div class="dashboard">
+    {% for package in packages %}
+    <ul>
+        <div class="card">
+            <li>{{ package.package_name }} - {{ package.tour_date }} {% if package.is_approved %} (Approved) {% else %} (Pending Approval) {% endif %}</li>
+        </div>
+    </ul>
+    {% endfor %}
+</div>
+-->
+<a href="{% url 'vendor_logout' %}" class="btn">Logout</a>
+{% endblock %}

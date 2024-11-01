@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore India</title>
+</head>
+<body>
+{% extends "base.html" %}
+{% block title %}Explore India - Home{% endblock %}
+{% block content %}
+<br>
+    <h1>Welcome to ExploreIndia Tours...!</h1>
+<br>
+    <nav>
+        <a href="{% url 'user_signup' %}">User Signup</a> |
+        <a href="{% url 'user_login' %}">User Login</a> |
+        <a href="{% url 'vendor_signup' %}">Vendor Signup</a> |
+        <a href="{% url 'vendor_login' %}">Vendor Login</a>
+    </nav>
+{% endblock %}
+</body>
+</html>

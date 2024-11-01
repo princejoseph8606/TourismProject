@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Our Destinations...</h1>
+        <h3>(Choose your next Destination)</h3>
+        <div class="dashboard">
+            {% for package in packages %}
+                <div class="card">
+                    <h2>{{ package.package_name }}</h2>
+                    <br>
+                    <p><strong>Tour Date:</strong> {{ package.tour_date }}</p>
+                    <br>
+                    <p><strong>Hotel Type:</strong> {{ package.hotel_type }}</p>
+                    <br>
+                    <p><strong>Food Type:</strong> {{ package.food_type }}</p>
+                    <br>
+                    <p><strong>Duration:</strong> {{ package.number_of_days }} days, {{ package.number_of_nights }} nights</p>
+                    <br>
+                    <p><strong>Visiting Places:</strong> {{ package.visiting_places }}</p>
+                    <br>
+                    <p><strong>Details:</strong>{{ package.description }}</p>
+                    <br>
+                    <p><strong><u>Gallery</u></strong></p>
+
+                    <div class="image-gallery">
+                        {% if package.image1 %}
+                            <img src="{{ package.image1.url }}" alt="Image 1" width="200" height="150">
+                        {% endif %}
+                        {% if package.image2 %}
+                            <img src="{{ package.image2.url }}" alt="Image 2" width="200" height="150">
+                        {% endif %}
+                        {% if package.image3 %}
+                            <img src="{{ package.image3.url }}" alt="Image 3" width="200" height="150">
+                        {% endif %}
+                    </div>
+
+
+                    <form>
+                        <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_PFbYCHqHYFZAIA" async></script>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+        <a href="{% url 'user_logout' %}" class="btn logout">Logout</a>
+    </div>
+</body>
+</html>
