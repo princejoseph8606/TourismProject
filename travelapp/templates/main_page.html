@@ -11,7 +11,7 @@
 {% block title %}Explore India - Home{% endblock %}
 {% block content %}
 <br>
-    <h1>Welcome to ExploreIndia Tours...!</h1>
+    <h1>Welcome to ExploreIndia Tours...! </h1>
 <br>
     <nav>
         <a href="{% url 'user_signup' %}">User Signup</a> |
@@ -19,6 +19,46 @@
         <a href="{% url 'vendor_signup' %}">Vendor Signup</a> |
         <a href="{% url 'vendor_login' %}">Vendor Login</a>
     </nav>
+    <div class="container">
+        <h1>Our Destinations...</h1>
+        <h3>(Choose your next Destination)</h3>
+        <div class="dashboard">
+            {% for package in packages %}
+                <div class="card">
+                    <h2>{{ package.package_name }}</h2>
+                    <br>
+                    <p><strong>Tour Date:</strong> {{ package.tour_date }}</p>
+                    <br>
+                    <p><strong>Hotel Type:</strong> {{ package.hotel_type }}</p>
+                    <br>
+                    <p><strong>Food Type:</strong> {{ package.food_type }}</p>
+                    <br>
+                    <p><strong>Duration:</strong> {{ package.number_of_days }} days, {{ package.number_of_nights }} nights</p>
+                    <br>
+                    <p><strong>Visiting Places:</strong> {{ package.visiting_places }}</p>
+                    <br>
+                    <p><strong>Details:</strong>{{ package.description }}</p>
+                    <br>
+                    <p><strong><u>Gallery</u></strong></p>
+
+                    <div class="image-gallery">
+                        {% if package.image1 %}
+                            <img src="{{ package.image1.url }}" alt="Image 1" width="200" height="150">
+                        {% endif %}
+                        {% if package.image2 %}
+                            <img src="{{ package.image2.url }}" alt="Image 2" width="200" height="150">
+                        {% endif %}
+                        {% if package.image3 %}
+                            <img src="{{ package.image3.url }}" alt="Image 3" width="200" height="150">
+                        {% endif %}
+                    </div>
+                    <nav>
+                    <a href="{% url 'user_login' %}">Book Now</a>
+                    </nav>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
 </body>
 </html>

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vendor Home</title>
+</head>
+<body>
+ {% block content %}
+    <h1>Welcome to Vendor Home</h1>
+    <a href="{% url 'vendor_dashboard' %}" class="btn">Add Package</a>
+    <!--<button onclick="window.location.href='{% url 'vendor_dashboard' %}'">Add Package</button>-->
+
+    <h2>Your Packages</h2>
+    <ul>
+        {% for package in request.user.travelpackage_set.all %}
+            <li>
+                <h3>{{ package.package_name }}</h3> -
+
+                <button onclick="window.location.href='{% url 'edit_package' package.id %}'">Edit Package</button>
+            </li>
+        {% empty %}
+            <p>You have no packages yet.</p>
+        {% endfor %}
+    </ul>
+ {% endblock %}
+</body>
+</html>
