@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Vendor Home</title>
+
 </head>
 <body>
  {% block content %}
@@ -15,9 +16,12 @@
     <ul>
         {% for package in request.user.travelpackage_set.all %}
             <li>
-                <h3>{{ package.package_name }}</h3> -
+                <h>{{ package.package_name }}</h> -
 
                 <button onclick="window.location.href='{% url 'edit_package' package.id %}'">Edit Package</button>
+            <br>
+                <br>
+                <br>
             </li>
         {% empty %}
             <p>You have no packages yet.</p>
